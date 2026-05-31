@@ -1,0 +1,10 @@
+﻿const express = require('express');
+const router = express.Router();
+const auth = require('../middleware/authMiddleware');
+const { getAllItems, createItem, updateQuantity, deleteItem, getDashboardSummary } = require('../controllers/groceryController');
+router.get('/', auth, getAllItems);
+router.post('/', auth, createItem);
+router.patch('/:id/quantity', auth, updateQuantity);
+router.delete('/:id', auth, deleteItem);
+router.get('/summary', auth, getDashboardSummary);
+module.exports = router;
